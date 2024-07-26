@@ -1,20 +1,43 @@
 <script setup>
-defineProps(['adicionar']);
+import {defineProps} from 'vue';
+const props = defineProps({
+  nome: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+  },
+  senha: {
+    type: Number,
+    required: true,
+  },
+  confirmacaoSenha: {
+    type: Number,
+    required: true,
+  },
+  dataNasc: {
+    type: Date,
+    required: true,
+  },
+  endereco: {
+    type: String,
+  },
+  cidade: {
+    type: String,
+  },
+});
 </script>
 
 
 <template>
 <div>
-    <h1>
-        
-    </h1>
-    <ul v-for="cadastro in adicionar" :key="cadastro.id" >
-        <li>{{ cadastro.nome }}</li>
-        <li>{{ cadastro.email }}</li>
-        <li>{{ cadastro.data }}</li>
-        <li  @click= "$emit(cadastro.id)" > a </li>
-      
-    </ul>
+    {{ nome }}
+    {{ email }}
+    {{ dataNasc }}
+    {{ endereco }}
+    {{ cidade }}
+
 </div>
 </template>
 

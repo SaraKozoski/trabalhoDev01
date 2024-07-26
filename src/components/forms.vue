@@ -1,21 +1,11 @@
 <script setup>
-import { reactive } from 'vue';
+import { ref } from 'vue';
 const titulo = 'Formulário Pessoal';
-const emit = defineEmits(['adicionar']);
-const cadastro = reactive({
-  nome: '',
-  email: '',
-  senha: '',
-  confirmacaoSenha: '',
-  dataNasc: '',
-  endereco: '',
-  cidade: ''
-})
+
 function salvar() {
-  if (cadastro.nome === '' || cadastro.senha === '') {
-    alert('Os campos nome e senha são obrigatórios');
-    return;
-  }
+ // if (cadastro.nome === '' || cadastro.senha === '') {
+   // alert('Os campos nome e senha são obrigatórios');
+   // return; }
   emit('adicionar', { ...cadastro });
 }
 </script>
@@ -27,36 +17,36 @@ function salvar() {
   <form id="form" @submit.prevent="salvar">
     <div class="container">
       <label for="name">Nome</label>
-      <input type="text" v-model="cadastro.nome" placeholder="Digite seu nome" />
+      <input type="text"  placeholder="Digite seu nome" />
     </div>
 
     <div class="container">
       <label for="email">E-mail</label>
-      <input type="text" v-model="cadastro.email" placeholder="Digite seu E-mail" />
+      <input type="text" placeholder="Digite seu E-mail" />
     </div>
     <div class="container">
       <label for="password">Senha</label>
-      <input type="text" v-model="cadastro.senha" placeholder="Digite sua Senha" />
+      <input type="text"  placeholder="Digite sua Senha" />
     </div>
     <div class="container">
       <label for="password">Confirme sua Senha</label>
-      <input type="text" v-model="cadastro.confirmacaoSenha" placeholder="Digite sua Senha" />
+      <input type="text"  placeholder="Digite sua Senha" />
     </div>
     <div class="container">
       <label for="date">Data de nascimento</label>
-      <input type="text" v-model="cadastro.dataNasc" placeholder="Digite sua data de nascimento" />
+      <input type="text" placeholder="Digite sua data de nascimento" />
     </div>
     <div class="container">
       <label for="address">Endereço</label>
-      <input type="text" v-model="cadastro.endereco" placeholder="Digite seu endereço" />
+      <input type="text"  placeholder="Digite seu endereço" />
     </div>
     <div class="container">
       <label for="city">Cidade</label>
-      <input type="text" v-model="cadastro.cidade" placeholder="Digite sua cidade" />
+      <input type="text" placeholder="Digite sua cidade" />
     </div>
     <div class="container">
       <label for="ES">Selecione seu estado:</label>
-      <select name="ES" id="estado" v-model="cadastro.estado">
+      <select name="ES" id="estado" v-model="estado">
         <option value="">AC </option>
         <option value="">AL</option>
         <option value="">AP</option>
