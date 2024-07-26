@@ -2,12 +2,6 @@
 import { ref } from 'vue';
 const titulo = 'Formulário Pessoal';
 
-function salvar() {
- // if (cadastro.nome === '' || cadastro.senha === '') {
-   // alert('Os campos nome e senha são obrigatórios');
-   // return; }
-  emit('adicionar', { ...cadastro });
-}
 </script>
 
 <template>

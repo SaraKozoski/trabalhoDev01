@@ -1,5 +1,15 @@
 <script setup>
 import {defineProps} from 'vue';
+
+function salvar() {
+  if (nome === '' || senha === '') {
+    alert('Os campos nome e senha são obrigatórios');
+   return; }
+  if(senha =! confirmacaoSenha){
+    alert('A confirmação de senha está diferente da senha!')
+    return; }
+  
+}
 const props = defineProps({
   nome: {
     type: String,
