@@ -1,30 +1,38 @@
 <script setup>
 import { reactive } from 'vue';
+
+
 const titulo = 'Formulário Pessoal';
 const emit = defineEmits(['adicionar']);
 const cadastro = reactive({
-  nome: '',
-  email: '',
-  senha: '',
-  confirmacaoSenha: '',
-  dataNasc: '',
-  endereco: '',
-  cidade: ''
+  nome: ' ',
+  email: ' ',
+  senha: ' ',
+  confirmacaoSenha: ' ',
+  dataNasc: null,
+  endereco: ' ',
+  cidade: ' ',
+  
 });
-function salvar() {
+
+
+function salvar() { // certo
   if (cadastro.nome === '' || cadastro.senha === '') {
     alert('Os campos nome e senha são obrigatórios');
-   return;
+    return;
   }
-  else{
-    if(cadastro.senha ==! cadastro.confirmacaoSenha){
-      alert('')
-    
+  else if (cadastro.senha !== cadastro.confirmacaoSenha) {
+    alert('Senha errada')
+
   }
-  emit('adicionar', { ...cadastro });
+  else {
+    emit('adicionar', { ...cadastro });
   }
+
 }
-const estado = [{
+
+
+const estado = [{ // certo
 
   nome: 'Acre',
   sigla: 'AC'
@@ -130,70 +138,85 @@ const estado = [{
 </script>
 
 <template>
+
   <body>
-  <div class="title">
-    <h1>{{ titulo }}</h1>
-  </div>
-  <form id="form" @submit.prevent="salvar">
-    <div class="container">
-      <label for="name">Nome</label>
-      <input type="text" v-model="cadastro.nome" placeholder="Digite seu nome" />
+    <div class="title">
+      <h1>{{ titulo }}</h1>
     </div>
-    <div class="container">
-      <label for="email">E-mail</label>
-      <input type="text" v-model="cadastro.email" placeholder="Digite seu E-mail" />
-    </div>
-    <div class="container">
-      <label for="password">Senha</label>
-      <input type="password" v-model="cadastro.senha" placeholder="Digite sua Senha" />
-    </div>
-    <div class="container">
-      <label for="password">Confirme sua Senha</label>
-      <input type="password" v-model="cadastro.confirmacaoSenha" placeholder="Digite sua Senha" />
-    </div>
-    <div class="container">
-      <label for="date">Data de nascimento</label>
-      <input type="date" v-model="cadastro.dataNasc" placeholder="Digite sua data de nascimento" />
-    </div>
-    <div class="container">
-      <label for="address">Endereço</label>
-      <input type="text" v-model="cadastro.endereco" placeholder="Digite seu endereço" />
-    </div>
-    <div class="container">
-      <label for="city">Cidade</label>
-      <input type="text" v-model="cadastro.cidade" placeholder="Digite sua cidade" />
-    </div>
-    <label for="">Selecione seu Estado:</label>
-    <div class="container">
-      <select name="estado" id="estado" class="form-control" v-model.lazy="estado.sigla">
-        <option v-for="(item, index) in estado" :value="item.sigla" :key="index.sigla"> {{ item.nome }} ({{ item.sigla }})
-        </option>
-      </select>
-    </div>
-    <div class="caixas">
-      <input type="checkbox" class="java" value="java">Java
-      <input type="checkbox" class="php" value="php">PHP
-      <input type="checkbox" class="javaScript" value="javaScript">javaScript
-      <input type="checkbox" class="python" value="python">Python
-    </div>
-    <div class="container">
-      <label for="hobby">Hobbies do seu tempo livre:</label>
-      <input type="text" v-model="hobbies" placeholder="Digite seu hobbie " />
-    </div>
-    <div class="container">
-      <label for="biografia">Biografia:</label>
-      <input type="text" v-model="biografia" placeholder="Digite sua biografia " />
-    </div>
-  
-    <button type="submit" class="botao" >Salvar</button>
-  </form>
-</body>
+    <form id="form" @submit.prevent="salvar">
+      <div class="container">
+        <label for="name">Nome</label>
+        <input type="text" v-model="cadastro.nome" placeholder="Digite seu nome" />
+      </div>
+
+      <div class="container">
+        <label for="email">E-mail</label>
+        <input type="text" v-model="cadastro.email" placeholder="Digite seu E-mail" />
+      </div>
+
+      <div class="container">
+        <label for="password">Senha</label>
+        <input type="password" v-model="cadastro.senha" placeholder="Digite sua Senha" />
+      </div>
+
+      <div class="container">
+        <label for="password">Confirme sua Senha</label>
+        <input type="password" v-model="cadastro.confirmacaoSenha" placeholder="Digite sua Senha" />
+      </div>
+
+      <div class="container">
+        <label for="date">Data de nascimento</label>
+        <input type="date" v-model="cadastro.dataNasc" placeholder="Digite sua data de nascimento" />
+      </div>
+
+      <div class="container">
+        <label for="address">Endereço</label>
+        <input type="text" v-model="cadastro.endereco" placeholder="Digite seu endereço" />
+      </div>
+      
+      <div class="container">
+        <label for="city">Cidade</label>
+        <input type="text" v-model="cadastro.cidade" placeholder="Digite sua cidade" />
+      </div>
+
+      <label for="">Selecione seu Estado:</label>
+
+      <div class="container">
+        <select name="estado" id="estado" class="form-control" v-model.lazy="estado.sigla">
+          <option v-for="(item, index) in estado" :value="item.sigla" :key="index.sigla"> {{ item.nome }} ({{ item.sigla}})
+          </option>
+        </select>
+      </div>
+
+      <div class="caixas">
+        <input type="checkbox" class="java" value="java">Java
+        <input type="checkbox" class="php" value="php">PHP
+        <input type="checkbox" class="javaScript" value="javaScript">javaScript
+        <input type="checkbox" class="python" value="python">Python
+      </div>
+
+      <div class="container">
+        <label for="hobby">Hobbies do seu tempo livre:</label>
+        <input type="text" v-model="hobbies" placeholder="Digite seu hobbie " />
+      </div>
+      <div class="container">
+        <label for="biografia">Biografia:</label>
+        <input type="text" v-model="biografia" placeholder="Digite sua biografia " />
+      </div>
+
+     <button @click="salvar">Salvar</button>
+    </form>
+  </body>
 </template>
 
 <style scoped>
-body{
+body {
   font-family: Arial, Helvetica, sans-serif;
- }
+  background-color: rgb(92, 169, 214);
+  margin-left: 25%;
+  margin-right: 25%;
+  border-radius: 15px;
+}
 
 .title {
   margin: auto;
@@ -220,7 +243,7 @@ body{
   display: flex;
   flex-direction: column;
   width: 40%;
-  border-radius: 5px ;
+  border-radius: 5px;
 }
 
 label {
@@ -228,14 +251,15 @@ label {
   color: #222;
 }
 
-.caixas{
+.caixas {
   display: flex;
   justify-content: center;
   font-size: 15px;
   padding: 0px 20px;
   gap: 10px;
 }
-.botao{
+
+.botao {
   background-color: rgb(207, 207, 216);
   padding: 8px;
   margin: 10px;

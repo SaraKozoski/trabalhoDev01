@@ -3,33 +3,29 @@ import { ref } from 'vue';
 import Forms from './components/FormsComp.vue';
 import Response from './components/ResponseComp.vue';
 
-const perfil = ref({
-    nome: '',
-    email: '',
-    dataNasc: '',
-    endereco: '', 
-    cidade: '',
-})
+const perfil = ref({})
+const resultado = ref(false)
 
-function adicionar(copiaPerfil) {
+function copiar(copiaPerfil) {
     perfil.value = copiaPerfil
+    resultado.value = true
 }
-// tera que ter uma funcao adicionar para copiar os dados
-// tem que ter uma variavel reativa para guardar os dados copiados
-// esses dados devem ser enviados para o Response via props
-
 </script>
 
 <template>
-    <hr>
+    
+     <hr>
     <div>
-        <Forms @adicionar="adicionar" />
+        <Forms @adicionar="copiar" />
     </div>
     <hr>
     <div>
-        <Response />
+        <Response v-if="resultado" :perfil="perfil"/>
     </div>
     <hr>
+
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>
