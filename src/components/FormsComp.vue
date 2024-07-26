@@ -14,9 +14,15 @@ const cadastro = reactive({
 function salvar() {
   if (cadastro.nome === '' || cadastro.senha === '') {
     alert('Os campos nome e senha são obrigatórios');
-    return;
+   return;
+  }
+  else{
+    if(cadastro.senha ==! cadastro.confirmacaoSenha){
+      alert('')
+    
   }
   emit('adicionar', { ...cadastro });
+  }
 }
 const estado = [{
 
@@ -230,8 +236,9 @@ label {
   gap: 10px;
 }
 .botao{
-  background-color: rgb(187, 187, 214);
-  padding: 10px;
+  background-color: rgb(207, 207, 216);
+  padding: 8px;
   margin: 10px;
+  border-radius: 5px;
 }
 </style>
