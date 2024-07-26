@@ -13,7 +13,7 @@ const cadastro = reactive({
 })
 function salvar() {
   if (cadastro.nome === '' || cadastro.senha === '') {
-    alert('Os campos nome e preço são obrigatórios');
+    alert('Os campos nome e senha são obrigatórios');
     return;
   }
   emit('adicionar', { ...cadastro });
@@ -24,7 +24,7 @@ function salvar() {
   <div class="title">
     <h1>{{ titulo }}</h1>
   </div>
-  <form id="form">
+  <form id="form" @submit.prevent="salvar">
     <div class="container">
       <label for="name">Nome</label>
       <input type="text" v-model="cadastro.nome" placeholder="Digite seu nome" />
@@ -86,6 +86,7 @@ function salvar() {
         <option value="">TO</option>
       </select>
     </div>
+    <button type="submit">Salvar</button>
   </form>
 </template>
 
