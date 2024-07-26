@@ -1,16 +1,16 @@
 <script setup>
-import forms from './components/forms.vue';
-import response from './components/response.vue';
+import Forms from './components/FormsComp.vue';
+import Response from './components/ResponseComp.vue';
 </script>
 
 <template>
     <hr>
     <div>
-        <forms/>
+        <Forms/>
     </div>
     <hr>
     <div>
-        <response/>
+        <Response/>
     </div>
     <hr>
 </template>

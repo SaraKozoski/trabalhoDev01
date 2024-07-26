@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, } from 'vue';
+import { reactive } from 'vue';
 const titulo = 'Formulário Pessoal';
 const emit = defineEmits(['adicionar']);
 const cadastro = reactive({
@@ -10,7 +10,7 @@ const cadastro = reactive({
   dataNasc: '',
   endereco: '',
   cidade: ''
-})
+});
 function salvar() {
   if (cadastro.nome === '' || cadastro.senha === '') {
     alert('Os campos nome e senha são obrigatórios');
@@ -124,6 +124,7 @@ const estado = [{
 </script>
 
 <template>
+  <body>
   <div class="title">
     <h1>{{ titulo }}</h1>
   </div>
@@ -132,7 +133,6 @@ const estado = [{
       <label for="name">Nome</label>
       <input type="text" v-model="cadastro.nome" placeholder="Digite seu nome" />
     </div>
-
     <div class="container">
       <label for="email">E-mail</label>
       <input type="text" v-model="cadastro.email" placeholder="Digite seu E-mail" />
@@ -164,13 +164,11 @@ const estado = [{
         </option>
       </select>
     </div>
-
     <div class="caixas">
       <input type="checkbox" class="java" value="java">Java
       <input type="checkbox" class="php" value="php">PHP
       <input type="checkbox" class="javaScript" value="javaScript">javaScript
       <input type="checkbox" class="python" value="python">Python
-
     </div>
     <div class="container">
       <label for="hobby">Hobbies do seu tempo livre:</label>
@@ -180,13 +178,17 @@ const estado = [{
       <label for="biografia">Biografia:</label>
       <input type="text" v-model="biografia" placeholder="Digite sua biografia " />
     </div>
-    <button type="submit">Salvar</button>
-
+  
+    <button type="submit" class="botao" >Salvar</button>
   </form>
-
+</body>
 </template>
 
 <style scoped>
+body{
+  font-family: Arial, Helvetica, sans-serif;
+ }
+
 .title {
   margin: auto;
   text-align: center;
@@ -220,13 +222,6 @@ label {
   color: #222;
 }
 
-.submit {
-  font-weight: bold;
-  border: 1px solid #222;
-  font-size: 10px;
-  padding: 5px;
-  margin: 0 auto;
-}
 .caixas{
   display: flex;
   justify-content: center;
@@ -234,5 +229,9 @@ label {
   padding: 0px 20px;
   gap: 10px;
 }
-
+.botao{
+  background-color: rgb(187, 187, 214);
+  padding: 10px;
+  margin: 10px;
+}
 </style>
